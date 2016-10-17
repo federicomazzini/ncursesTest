@@ -59,6 +59,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		063CBE951DB43325004600E4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				06B425591DA8336A000EF59C /* Map.swift */,
+				06E1A9FF1DAE793A003C4901 /* Actor.swift */,
+				064844361DAEA9C000DF0202 /* MapNode.swift */,
+				064844381DAEAB9000DF0202 /* Position.swift */,
+				0648443A1DAEAF2D00DF0202 /* GroundType.swift */,
+				0648443C1DAEB24E00DF0202 /* GroundCharacters.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		0648443E1DAEC02F00DF0202 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,15 +100,10 @@
 		06F90C4F1DA4326E003E6C44 /* ncursesTest */ = {
 			isa = PBXGroup;
 			children = (
+				063CBE951DB43325004600E4 /* Model */,
 				0648443E1DAEC02F00DF0202 /* Protocols */,
 				06F90C501DA4326E003E6C44 /* main.swift */,
-				06B425591DA8336A000EF59C /* Map.swift */,
 				06B4255B1DA84136000EF59C /* ControlsManager.swift */,
-				06E1A9FF1DAE793A003C4901 /* Actor.swift */,
-				064844361DAEA9C000DF0202 /* MapNode.swift */,
-				064844381DAEAB9000DF0202 /* Position.swift */,
-				0648443A1DAEAF2D00DF0202 /* GroundType.swift */,
-				0648443C1DAEB24E00DF0202 /* GroundCharacters.swift */,
 				06340B4F1DB1684D005C8332 /* String-Extension.swift */,
 			);
 			path = ncursesTest;

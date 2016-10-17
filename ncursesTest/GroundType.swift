@@ -17,7 +17,6 @@ struct GroundType : Passable {
         
         let ch = ground!.char
         let s = String(ch).unicodeScalars
-//        s[s.startIndex].value
         
         self.character = s[s.startIndex].value
         self.passable = passableMapper[GroundCharacters(rawValue: value)!]!
@@ -28,7 +27,6 @@ struct GroundType : Passable {
         
         let ch = ground!.char
         let s = String(ch).unicodeScalars
-//        s[s.startIndex].value
         
         self.character = s[s.startIndex].value
         self.passable = passableMapper[GroundCharacters(rawValue: value)!]!

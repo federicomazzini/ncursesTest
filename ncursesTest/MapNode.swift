@@ -16,4 +16,12 @@ class MapNode {
         self.position = position
         self.groundType = groundType
     }
+    
+    func isPassable() -> Bool {
+        if self.groundType.passable {
+            return true
+        } else {
+            return false
+        }
+    }
 }

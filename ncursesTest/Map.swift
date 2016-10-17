@@ -49,7 +49,6 @@ class Map {
             for column in 0...width {
                 let node = MapNode(position: Position(x: column, y: row), groundType: GroundType(value: map[row][column]))
                 h.append(node)
-//                local[row][column] = node
             }
             local.append(h)
         }
@@ -64,19 +63,24 @@ class Map {
                 let mapNode = localMap[row][column]
                 let char = mapNode.groundType.character
                 mvaddch(Int32(row), Int32(column), char)
-                
-                // Draw the tile
-//                switch( map[row][column] ) {
-//                    case mapTiles.floor.rawValue:
-//                        mvaddch(Int32(row), Int32(column), UInt32("."))
-//                    case mapTiles.wall.rawValue:
-//                        mvaddch(Int32(row), Int32(column), UInt32("#"))
-//                    default:
-//                        break
-//                }
             }
         }
-        refresh()
+    }
+    
+    class func localMapPositionExists(position: Position) -> Bool {
+        if localMap.count <= position.y {
+            return false
+        }
+        
+        if localMap[0].count <= position.x {
+            return false
+        }
+        
+        if position.y < 0 || position.x < 0 {
+            return false
+        }
+        
+        return true
     }
     
 }

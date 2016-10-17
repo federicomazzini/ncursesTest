@@ -41,12 +41,18 @@ clear()
 // Show the main character on the screen
 let player = Actor(x: 4, y: 4)
 Map.drawLocalMap()
+mvaddch(Int32(player.position.y), Int32(player.position.x), UInt32("@"))
+ControlsManager.sharedInstance.printPlayerPosition(player)
 repeat {
     let ch = getch()
     Map.drawLocalMap()
     if !ControlsManager.sharedInstance.processInput(UInt32(ch), player: player) {
         break
     }
+    
+    ControlsManager.sharedInstance.printPlayerPosition(player)
+    
+    refresh()
 } while 1 == 1
 
 endwin()
