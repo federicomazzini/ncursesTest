@@ -38,19 +38,18 @@ clear()
 //attroff(COLOR_PAIR(1))
 //refresh()
 
-// Show the main character on the screen
-let player = Actor(x: 4, y: 4)
-Map.drawLocalMap()
-mvaddch(Int32(player.position.y), Int32(player.position.x), UInt32("@"))
-ControlsManager.sharedInstance.printPlayerPosition(player)
+Map.drawLocalMapAroundPlayer()
+Player.sharedInstance.drawPlayer()
+ControlsManager.sharedInstance.printPlayerPosition()
 repeat {
     let ch = getch()
-    Map.drawLocalMap()
-    if !ControlsManager.sharedInstance.processInput(UInt32(ch), player: player) {
+    if !ControlsManager.sharedInstance.processInput(UInt32(ch)) {
         break
     }
     
-    ControlsManager.sharedInstance.printPlayerPosition(player)
+    Map.drawLocalMapAroundPlayer()
+    Player.sharedInstance.drawPlayer()
+    ControlsManager.sharedInstance.printPlayerPosition()
     
     refresh()
 } while 1 == 1

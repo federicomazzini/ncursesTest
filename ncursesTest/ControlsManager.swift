@@ -11,7 +11,7 @@ import Foundation
 class ControlsManager {
     static let sharedInstance = ControlsManager()
     
-    func processInput(ch : UInt32, player: Actor) -> Bool {
+    func processInput(ch : UInt32) -> Bool {
         
         var string = ""
         string.append(Character(UnicodeScalar(ch)))
@@ -30,33 +30,32 @@ class ControlsManager {
             
             switch ch {
                 case UInt32(KEY_LEFT):
-                    newPosition = Position(x: player.position.x - 1, y: player.position.y)
+                    newPosition = Position(x: Player.sharedInstance.position.x - 1, y: Player.sharedInstance.position.y)
                 case UInt32(KEY_RIGHT):
-                    newPosition = Position(x: player.position.x + 1, y: player.position.y)
+                    newPosition = Position(x: Player.sharedInstance.position.x + 1, y: Player.sharedInstance.position.y)
                 case UInt32(KEY_UP):
-                    newPosition = Position(x: player.position.x, y: player.position.y - 1)
+                    newPosition = Position(x: Player.sharedInstance.position.x, y: Player.sharedInstance.position.y - 1)
                 case UInt32(KEY_DOWN):
-                    newPosition = Position(x: player.position.x, y: player.position.y + 1)
+                    newPosition = Position(x: Player.sharedInstance.position.x, y: Player.sharedInstance.position.y + 1)
                 default:
                     break
             }
             
+            //TODO: refactor to check for map drawable border instead of player position
             if Map.localMapPositionExists(newPosition) {
                 if Map.localMap[newPosition.y][newPosition.x].isPassable() {
-                    player.position = newPosition
+                    Player.sharedInstance.position = newPosition
                 }
             }
         }
         
-        mvaddch(Int32(player.position.y), Int32(player.position.x), UInt32("@"))
-        
         return true
     }
     
-    func printPlayerPosition(player: Actor) {
+    func printPlayerPosition() {
         
-        let posX = String(player.position.x)
-        let posY = String(player.position.y)
+        let posX = String(Player.sharedInstance.position.x)
+        let posY = String(Player.sharedInstance.position.y)
         move(16, 0)
         addstr("Player position")
         
@@ -72,4 +71,5 @@ class ControlsManager {
         addstr("y: ")
         addstr(posY)
     }
+    
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0610A6501DB56DED003AAF83 /* Actor-Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0610A64F1DB56DED003AAF83 /* Actor-Drawing.swift */; };
+		0610A6541DB56EC9003AAF83 /* Map-Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0610A6531DB56EC9003AAF83 /* Map-Drawing.swift */; };
+		0610A6561DB56F1E003AAF83 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0610A6551DB56F1E003AAF83 /* Player.swift */; };
 		06340B501DB1684D005C8332 /* String-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06340B4F1DB1684D005C8332 /* String-Extension.swift */; };
 		064844371DAEA9C000DF0202 /* MapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064844361DAEA9C000DF0202 /* MapNode.swift */; };
 		064844391DAEAB9000DF0202 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064844381DAEAB9000DF0202 /* Position.swift */; };
@@ -16,6 +19,8 @@
 		06B4255A1DA8336A000EF59C /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B425591DA8336A000EF59C /* Map.swift */; };
 		06B4255C1DA84136000EF59C /* ControlsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B4255B1DA84136000EF59C /* ControlsManager.swift */; };
 		06E1AA001DAE793A003C4901 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E1A9FF1DAE793A003C4901 /* Actor.swift */; };
+		06F0C4771DCA6C000026DD8C /* Sector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F0C4761DCA6C000026DD8C /* Sector.swift */; };
+		06F636DF1DD264EA00085CDA /* Player-Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F636DE1DD264EA00085CDA /* Player-Drawing.swift */; };
 		06F90C511DA4326E003E6C44 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F90C501DA4326E003E6C44 /* main.swift */; };
 		06F90C581DA43C69003E6C44 /* libncurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F90C571DA43C69003E6C44 /* libncurses.tbd */; };
 /* End PBXBuildFile section */
@@ -33,6 +38,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0610A64F1DB56DED003AAF83 /* Actor-Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Actor-Drawing.swift"; sourceTree = "<group>"; };
+		0610A6531DB56EC9003AAF83 /* Map-Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Map-Drawing.swift"; sourceTree = "<group>"; };
+		0610A6551DB56F1E003AAF83 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		06340B4F1DB1684D005C8332 /* String-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extension.swift"; sourceTree = "<group>"; };
 		064844361DAEA9C000DF0202 /* MapNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNode.swift; sourceTree = "<group>"; };
 		064844381DAEAB9000DF0202 /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
@@ -42,6 +50,8 @@
 		06B425591DA8336A000EF59C /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		06B4255B1DA84136000EF59C /* ControlsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsManager.swift; sourceTree = "<group>"; };
 		06E1A9FF1DAE793A003C4901 /* Actor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		06F0C4761DCA6C000026DD8C /* Sector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sector.swift; sourceTree = "<group>"; };
+		06F636DE1DD264EA00085CDA /* Player-Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Player-Drawing.swift"; sourceTree = "<group>"; };
 		06F90C4D1DA4326E003E6C44 /* ncursesTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ncursesTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06F90C501DA4326E003E6C44 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		06F90C571DA43C69003E6C44 /* libncurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libncurses.tbd; path = usr/lib/libncurses.tbd; sourceTree = SDKROOT; };
@@ -59,6 +69,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0610A64E1DB56DD4003AAF83 /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				0610A64F1DB56DED003AAF83 /* Actor-Drawing.swift */,
+				0610A6531DB56EC9003AAF83 /* Map-Drawing.swift */,
+				06F636DE1DD264EA00085CDA /* Player-Drawing.swift */,
+			);
+			name = Drawing;
+			sourceTree = "<group>";
+		};
 		063CBE951DB43325004600E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +88,8 @@
 				064844381DAEAB9000DF0202 /* Position.swift */,
 				0648443A1DAEAF2D00DF0202 /* GroundType.swift */,
 				0648443C1DAEB24E00DF0202 /* GroundCharacters.swift */,
+				0610A6551DB56F1E003AAF83 /* Player.swift */,
+				06F0C4761DCA6C000026DD8C /* Sector.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -100,6 +122,7 @@
 		06F90C4F1DA4326E003E6C44 /* ncursesTest */ = {
 			isa = PBXGroup;
 			children = (
+				0610A64E1DB56DD4003AAF83 /* Drawing */,
 				063CBE951DB43325004600E4 /* Model */,
 				0648443E1DAEC02F00DF0202 /* Protocols */,
 				06F90C501DA4326E003E6C44 /* main.swift */,
@@ -169,10 +192,15 @@
 				0648443D1DAEB24E00DF0202 /* GroundCharacters.swift in Sources */,
 				06B4255A1DA8336A000EF59C /* Map.swift in Sources */,
 				06B4255C1DA84136000EF59C /* ControlsManager.swift in Sources */,
+				0610A6541DB56EC9003AAF83 /* Map-Drawing.swift in Sources */,
 				064844391DAEAB9000DF0202 /* Position.swift in Sources */,
+				0610A6561DB56F1E003AAF83 /* Player.swift in Sources */,
 				06340B501DB1684D005C8332 /* String-Extension.swift in Sources */,
 				06F90C511DA4326E003E6C44 /* main.swift in Sources */,
+				06F636DF1DD264EA00085CDA /* Player-Drawing.swift in Sources */,
 				0648443B1DAEAF2D00DF0202 /* GroundType.swift in Sources */,
+				06F0C4771DCA6C000026DD8C /* Sector.swift in Sources */,
+				0610A6501DB56DED003AAF83 /* Actor-Drawing.swift in Sources */,
 				064844401DAEC04300DF0202 /* Passable.swift in Sources */,
 				06E1AA001DAE793A003C4901 /* Actor.swift in Sources */,
 				064844371DAEA9C000DF0202 /* MapNode.swift in Sources */,
