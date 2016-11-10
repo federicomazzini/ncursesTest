@@ -38,7 +38,7 @@ clear()
 //attroff(COLOR_PAIR(1))
 //refresh()
 
-Map.drawLocalMapAroundPlayer()
+Map.drawMemoryMapAroundPlayer()
 Player.sharedInstance.drawPlayer()
 ControlsManager.sharedInstance.printPlayerPosition()
 repeat {
@@ -47,7 +47,7 @@ repeat {
         break
     }
     
-    Map.drawLocalMapAroundPlayer()
+    Map.drawMemoryMapAroundPlayer()
     Player.sharedInstance.drawPlayer()
     ControlsManager.sharedInstance.printPlayerPosition()
     

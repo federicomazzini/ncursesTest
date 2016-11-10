@@ -10,22 +10,22 @@ import Foundation
 
 extension Map {
     
-    class func drawLocalMap() {
-        for row in 0...localMapHeight {
-            for column in 0...localMapWidth {
+    class func drawMemoryMap() {
+        for row in 0...visibleMapHeight {
+            for column in 0...visibleMapWidth {
                 
-                let mapNode = localMap[row][column]
+                let mapNode = memoryMap[row][column]
                 let char = mapNode.groundType.character
                 mvaddch(Int32(row), Int32(column), char)
             }
         }
     }
     
-    class func drawLocalMapAroundPlayer() {
+    class func drawMemoryMapAroundPlayer() {
         let playerPosition = Player.sharedInstance.position
         
-        let horizontalOffset = localMapWidth  / 2
-        let verticalOffset   = localMapHeight / 2
+        let horizontalOffset = visibleMapWidth  / 2
+        let verticalOffset   = visibleMapHeight / 2
         
         let startingHorizontalPosition = playerPosition.x - horizontalOffset
         let startingVerticalPosition = playerPosition.y - verticalOffset
@@ -40,11 +40,13 @@ extension Map {
             for column in startingHorizontalPosition...endingHorizontalPosition {
                 
                 let newPosition = Position(x: column, y: row)
-                if Map.localMapPositionExists(newPosition) {
+                if Map.memoryMapPositionExists(newPosition) {
                     
-                    let mapNode = localMap[row][column]
+                    let mapNode = memoryMap[row][column]
                     let char = mapNode.groundType.character
                     mvaddch(Int32(screenRow), Int32(screenColumn), char)
+                } else {
+                    mvaddch(Int32(screenRow), Int32(screenColumn), UInt32(" "))
                 }
                 screenColumn = screenColumn + 1
             }

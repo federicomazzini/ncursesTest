@@ -41,9 +41,8 @@ class ControlsManager {
                     break
             }
             
-            //TODO: refactor to check for map drawable border instead of player position
-            if Map.localMapPositionExists(newPosition) {
-                if Map.localMap[newPosition.y][newPosition.x].isPassable() {
+            if Map.memoryMapPositionExists(newPosition) {
+                if Map.memoryMap[newPosition.y][newPosition.x].isPassable() {
                     Player.sharedInstance.position = newPosition
                 }
             }

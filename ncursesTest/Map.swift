@@ -15,7 +15,7 @@ private enum mapTiles : Int {
 }
 
 class Map {
-    static let width  : Int = 39
+    static let width  : Int = 39 // Specify one unit less for simplicity in loops
     static let height : Int = 29
     
     static let map = [
@@ -51,13 +51,18 @@ class Map {
         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
     ]
     
-    static let localMapWidth  : Int = 20
-    static let localMapHeight : Int = 14
+    /*
+     Again specify one unit less for simplicity in loops. These
+     are actually uneven numbers so the character can be drawn in the screen
+     central tile, calculated by the half of these numbers rounded up.
+     */
+    static let visibleMapWidth  : Int = 20
+    static let visibleMapHeight : Int = 14
     
-    static var localMap: [[MapNode]] = Map.generateLocalMap()
+    static var memoryMap: [[MapNode]] = Map.generateMemoryMap()
     
-    class func generateLocalMap() -> [[MapNode]] {
-        var local = [[MapNode]]()
+    class func generateMemoryMap() -> [[MapNode]] {
+        var memory = [[MapNode]]()
         
         for row in 0...height {
             var h = [MapNode]()
@@ -65,18 +70,18 @@ class Map {
                 let node = MapNode(position: Position(x: column, y: row), groundType: GroundType(value: map[row][column]))
                 h.append(node)
             }
-            local.append(h)
+            memory.append(h)
         }
         
-        return local
+        return memory
     }
     
-    class func localMapPositionExists(position: Position) -> Bool {
-        if localMap.count <= position.y {
+    class func memoryMapPositionExists(position: Position) -> Bool {
+        if memoryMap.count <= position.y {
             return false
         }
         
-        if localMap[0].count <= position.x {
+        if memoryMap[0].count <= position.x {
             return false
         }
         
