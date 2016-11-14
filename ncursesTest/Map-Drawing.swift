@@ -10,7 +10,7 @@ import Foundation
 
 extension Map {
     
-    class func drawMemoryMap() {
+    func drawMemoryMap() {
         for row in 0...visibleMapHeight {
             for column in 0...visibleMapWidth {
                 
@@ -21,7 +21,7 @@ extension Map {
         }
     }
     
-    class func drawMemoryMapAroundPlayer() {
+    func drawMemoryMapAroundPlayer() {
         let playerPosition = Player.sharedInstance.position
         
         let horizontalOffset = visibleMapWidth  / 2
@@ -40,11 +40,16 @@ extension Map {
             for column in startingHorizontalPosition...endingHorizontalPosition {
                 
                 let newPosition = Position(x: column, y: row)
-                if Map.memoryMapPositionExists(newPosition) {
+                if memoryMapPositionExists(newPosition) {
                     
                     let mapNode = memoryMap[row][column]
                     let char = mapNode.groundType.character
-                    mvaddch(Int32(screenRow), Int32(screenColumn), char)
+                    
+                    if mapNode.visible {
+                        mvaddch(Int32(screenRow), Int32(screenColumn), char)
+                    } else {
+                        mvaddch(Int32(screenRow), Int32(screenColumn), UInt32(" "))
+                    }
                 } else {
                     mvaddch(Int32(screenRow), Int32(screenColumn), UInt32(" "))
                 }

@@ -10,5 +10,5 @@ import Foundation
 
 class Player: Actor {
     
-    static let sharedInstance = Player(x: Int(Map.width / 2), y: Int(Map.height / 2))
+    static let sharedInstance = Player(x: Int(Map.sharedInstance.width / 2), y: Int(Map.sharedInstance.height / 2))
 }

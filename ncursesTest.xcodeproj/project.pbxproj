@@ -21,6 +21,7 @@
 		06E1AA001DAE793A003C4901 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E1A9FF1DAE793A003C4901 /* Actor.swift */; };
 		06F0C4771DCA6C000026DD8C /* Sector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F0C4761DCA6C000026DD8C /* Sector.swift */; };
 		06F636DF1DD264EA00085CDA /* Player-Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F636DE1DD264EA00085CDA /* Player-Drawing.swift */; };
+		06F636E51DD642FC00085CDA /* ShadowCastingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F636E41DD642FC00085CDA /* ShadowCastingManager.swift */; };
 		06F90C511DA4326E003E6C44 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F90C501DA4326E003E6C44 /* main.swift */; };
 		06F90C581DA43C69003E6C44 /* libncurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F90C571DA43C69003E6C44 /* libncurses.tbd */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		06E1A9FF1DAE793A003C4901 /* Actor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		06F0C4761DCA6C000026DD8C /* Sector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sector.swift; sourceTree = "<group>"; };
 		06F636DE1DD264EA00085CDA /* Player-Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Player-Drawing.swift"; sourceTree = "<group>"; };
+		06F636E41DD642FC00085CDA /* ShadowCastingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowCastingManager.swift; sourceTree = "<group>"; };
 		06F90C4D1DA4326E003E6C44 /* ncursesTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ncursesTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06F90C501DA4326E003E6C44 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		06F90C571DA43C69003E6C44 /* libncurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libncurses.tbd; path = usr/lib/libncurses.tbd; sourceTree = SDKROOT; };
@@ -128,6 +130,7 @@
 				06F90C501DA4326E003E6C44 /* main.swift */,
 				06B4255B1DA84136000EF59C /* ControlsManager.swift */,
 				06340B4F1DB1684D005C8332 /* String-Extension.swift */,
+				06F636E41DD642FC00085CDA /* ShadowCastingManager.swift */,
 			);
 			path = ncursesTest;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				064844401DAEC04300DF0202 /* Passable.swift in Sources */,
 				06E1AA001DAE793A003C4901 /* Actor.swift in Sources */,
 				064844371DAEA9C000DF0202 /* MapNode.swift in Sources */,
+				06F636E51DD642FC00085CDA /* ShadowCastingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

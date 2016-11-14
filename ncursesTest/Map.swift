@@ -15,10 +15,12 @@ private enum mapTiles : Int {
 }
 
 class Map {
-    static let width  : Int = 39 // Specify one unit less for simplicity in loops
-    static let height : Int = 29
+    static let sharedInstance = Map()
     
-    static let map = [
+    let width  : Int = 39 // Specify one unit less for simplicity in loops
+    let height : Int = 29
+    
+    let map = [
         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
         [ 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
@@ -56,12 +58,27 @@ class Map {
      are actually uneven numbers so the character can be drawn in the screen
      central tile, calculated by the half of these numbers rounded up.
      */
-    static let visibleMapWidth  : Int = 20
-    static let visibleMapHeight : Int = 14
+    let visibleMapWidth  : Int = 20
+    let visibleMapHeight : Int = 14
     
-    static var memoryMap: [[MapNode]] = Map.generateMemoryMap()
+    var memoryMap: [[MapNode]]
     
-    class func generateMemoryMap() -> [[MapNode]] {
+    init() {
+        var memory = [[MapNode]]()
+        
+        for row in 0...height {
+            var h = [MapNode]()
+            for column in 0...width {
+                let node = MapNode(position: Position(x: column, y: row), groundType: GroundType(value: map[row][column]))
+                h.append(node)
+            }
+            memory.append(h)
+        }
+        
+        memoryMap = memory
+    }
+    
+    func generateMemoryMap() -> [[MapNode]] {
         var memory = [[MapNode]]()
         
         for row in 0...height {
@@ -76,7 +93,7 @@ class Map {
         return memory
     }
     
-    class func memoryMapPositionExists(position: Position) -> Bool {
+    func memoryMapPositionExists(position: Position) -> Bool {
         if memoryMap.count <= position.y {
             return false
         }
@@ -91,7 +108,5 @@ class Map {
         
         return true
     }
-    
-    
     
 }

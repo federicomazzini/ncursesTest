@@ -11,10 +11,20 @@ import Foundation
 class MapNode {
     var position : Position
     var groundType : GroundType
+    var visible : Bool
+    var opaque: Bool
     
     init(position: Position, groundType: GroundType) {
         self.position = position
         self.groundType = groundType
+        
+        self.visible = false
+        
+        if groundType.passable {
+            self.opaque = false
+        } else {
+            self.opaque = true
+        }
     }
     
     func isPassable() -> Bool {

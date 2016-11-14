@@ -41,8 +41,8 @@ class ControlsManager {
                     break
             }
             
-            if Map.memoryMapPositionExists(newPosition) {
-                if Map.memoryMap[newPosition.y][newPosition.x].isPassable() {
+            if Map.sharedInstance.memoryMapPositionExists(newPosition) {
+                if Map.sharedInstance.memoryMap[newPosition.y][newPosition.x].isPassable() {
                     Player.sharedInstance.position = newPosition
                 }
             }
