@@ -10,7 +10,9 @@ import Foundation
 
 class ShadowCastingManager {
     static let sharedInstance = ShadowCastingManager()
-
+    
+    var startSlope : Double = 1.0
+    
     var multipliers = [
         [1, 0, 0, -1, -1, 0, 0, 1],
         [0, 1, -1, 0, 0, -1, 1, 0],
@@ -22,46 +24,50 @@ class ShadowCastingManager {
                    startSlope : Double, endSlope: Double, xx: Int, xy: Int, yx: Int,
                    yy: Int) {
         
-                        if startSlope < endSlope {
+                        if self.startSlope < endSlope {
                             return
                         }
-                        var auxStartSlope : Double = startSlope
-                        var nextStartSlope = startSlope
+
+                        var nextStartSlope = self.startSlope
         
-                        //
-                        if row > radius {
-                            return
-                        }
+//                        if row > radius {
+//                            print("***")
+//                        }
         
                         for i in row...radius {
                             var blocked = false
                             let dx = -i, dy = -i
                             
-                            //
-                            if dx > 0 {
-                                return
-                            }
+//                            if dx > 0 {
+//                                print("***")
+//                            }
                             
                             for j in dx...0 {
                                 let lSlope : Double = (Double(j) - 0.5) / (Double(dy) + 0.5)
                                 let rRlope : Double = (Double(j) + 0.5) / (Double(dy) - 0.5)
-                                if startSlope < rRlope {
+                                if self.startSlope < rRlope {
                                     continue
                                 } else if endSlope > lSlope {
                                     break
                                 }
                                 
-                                let sax : Int = j * xx + dy * xy
-                                let say : Int = j * yx + dy * yy
-                                if ((sax < 0 && Int(abs(sax)) > x) ||
-                                    (say < 0 && Int(abs(say)) > y)) {
+                                // Translate the dx, dy coordinates into map coordinates.
+                                let ax : Int = x + j * xx + dy * xy
+                                let ay : Int = y + j * yx + dy * yy
+//                                if ((sax < 0 && Int(abs(sax)) > x) ||
+//                                    (say < 0 && Int(abs(say)) > y)) {
+//                                    continue
+//                                }
+//                                let ax : Int = x + sax
+//                                let ay : Int = y + say
+                                
+                                if !Map.sharedInstance.memoryMapPositionExists(Position(x: ax, y: ay)) {
                                     continue
                                 }
-                                let ax : Int = x + sax
-                                let ay : Int = y + say
-                                if ax >= Map.sharedInstance.width || ay >= Map.sharedInstance.height {
-                                    continue
-                                }
+                                
+//                                if ax >= Map.sharedInstance.width || ay >= Map.sharedInstance.height {
+//                                    continue
+//                                }
                                 
                                 let radius2 : Int = radius * radius
                                 if Int(j * j + dy * dy) < radius2 {
@@ -76,13 +82,13 @@ class ShadowCastingManager {
                                         continue
                                     } else {
                                         blocked = false
-                                        auxStartSlope = nextStartSlope
+                                        self.startSlope = nextStartSlope
                                     }
-                                } else if mapNode.opaque {
+                                } else if mapNode.opaque && i < radius {
                                     blocked = true
-                                    nextStartSlope = rRlope
-                                    castLight(x, y: y, radius: radius, row: i+1, startSlope: auxStartSlope, endSlope: lSlope, xx: xx,
+                                    castLight(x, y: y, radius: radius, row: i + 1, startSlope: self.startSlope, endSlope: lSlope, xx: xx,
                                               xy: xy, yx: yx, yy: yy)
+                                    nextStartSlope = rRlope
                                 }
                             }
                             if blocked {
@@ -93,7 +99,8 @@ class ShadowCastingManager {
 
     func doFOV(x: Int, y: Int, radius: Int) {
         for i in 0...7 {
-            castLight(x, y: y, radius: radius, row: 1, startSlope: 1.0, endSlope: 0.0, xx: multipliers[0][i],
+            self.startSlope = 1.0
+            castLight(x, y: y, radius: radius, row: 1, startSlope: self.startSlope, endSlope: 0.0, xx: multipliers[0][i],
                       xy: multipliers[1][i], yx: multipliers[2][i], yy: multipliers[3][i])
         }
     }

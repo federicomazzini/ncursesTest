@@ -38,7 +38,7 @@ clear()
 //attroff(COLOR_PAIR(1))
 //refresh()
 
-ShadowCastingManager.sharedInstance.doFOV(Player.sharedInstance.position.x, y: Player.sharedInstance.position.y, radius: 5)
+ShadowCastingManager.sharedInstance.doFOV(Player.sharedInstance.position.x, y: Player.sharedInstance.position.y, radius: 9)
 Map.sharedInstance.drawMemoryMapAroundPlayer()
 Player.sharedInstance.drawPlayer()
 ControlsManager.sharedInstance.printPlayerPosition()
@@ -48,7 +48,8 @@ repeat {
         break
     }
     
-    ShadowCastingManager.sharedInstance.doFOV(Player.sharedInstance.position.x, y: Player.sharedInstance.position.y, radius: 5)
+    Map.sharedInstance.hideMemoryMap()
+    ShadowCastingManager.sharedInstance.doFOV(Player.sharedInstance.position.x, y: Player.sharedInstance.position.y, radius: 9)
     Map.sharedInstance.drawMemoryMapAroundPlayer()
     Player.sharedInstance.drawPlayer()
     ControlsManager.sharedInstance.printPlayerPosition()
